@@ -1,435 +1,1241 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Odontología Integral</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Odontología Integral — Dra. Abraham & Dr. Sapag</title>
+  <meta name="description" content="Clínica odontológica integral. Blanqueamiento dental, ortodoncia, prótesis y odontología general con los mejores profesionales.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 
+  <style>
+    /* ───────────────────────────────────────────
+       TOKENS & RESET
+    ─────────────────────────────────────────── */
     :root {
-      --blue-dark: #0C447C;
-      --blue-mid: #185FA5;
-      --blue-light: #E6F1FB;
-      --teal-dark: #0F6E56;
-      --teal-mid: #1D9E75;
-      --teal-light: #E1F5EE;
-      --teal-soft: #9FE1CB;
-      --white: #ffffff;
-      --gray-bg: #F8FBFF;
-      --gray-border: rgba(0,0,0,0.1);
-      --text-main: #1a1a2e;
-      --text-muted: #5f6b7a;
-      --text-light: #8a95a3;
+      --color-bg:      #F7F8FA;
+      --color-surface: #FFFFFF;
+      --color-dark:    #0A1628;
+      --color-primary: #1A56DB;
+      --color-accent:  #00C9A7;
+      --color-muted:   #6B7280;
+      --color-border:  #E5E7EB;
+      --shadow-sm:     0 4px 24px rgba(10,22,40,0.07);
+      --shadow-md:     0 8px 40px rgba(10,22,40,0.13);
+      --r-card:  16px;
+      --r-btn:   8px;
+      --r-pill:  999px;
     }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
-      color: var(--text-main);
-      background: var(--white);
-      line-height: 1.6;
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--color-dark);
+      background: var(--color-bg);
+      overflow-x: hidden;
     }
 
-    /* NAV */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(8px);
-      border-bottom: 0.5px solid var(--gray-border);
-      padding: 0 2rem;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 60px;
-    }
-    .nav-brand {
-      display: flex; align-items: center; gap: 8px;
-      font-size: 15px; font-weight: 600; color: var(--blue-dark);
-      text-decoration: none;
-    }
-    .nav-brand i { font-size: 20px; color: var(--teal-mid); }
-    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-    .nav-links a {
-      font-size: 14px; color: var(--text-muted); text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--blue-dark); }
-    .nav-cta {
-      background: var(--teal-mid); color: var(--white);
-      border: none; border-radius: 8px;
-      padding: 8px 18px; font-size: 14px; font-weight: 500;
-      cursor: pointer; display: flex; align-items: center; gap: 6px;
-      text-decoration: none; transition: background 0.2s;
-    }
-    .nav-cta:hover { background: var(--teal-dark); }
+    img, svg { display: block; }
 
-    /* HERO */
-    .hero {
-      background: var(--blue-dark);
-      padding: 5rem 2rem 4rem;
-      text-align: center;
-      position: relative; overflow: hidden;
+    a { text-decoration: none; }
+
+    /* ───────────────────────────────────────────
+       TYPOGRAPHY
+    ─────────────────────────────────────────── */
+    h1, h2, h3 { font-family: 'Syne', sans-serif; }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
     }
-    .hero::before {
-      content: ''; position: absolute;
-      top: -80px; right: -80px;
-      width: 300px; height: 300px; border-radius: 50%;
-      background: rgba(255,255,255,0.04);
+
+    h2 {
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.18;
     }
-    .hero::after {
-      content: ''; position: absolute;
-      bottom: -60px; left: -60px;
-      width: 220px; height: 220px; border-radius: 50%;
-      background: rgba(255,255,255,0.03);
+
+    .overline {
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      display: block;
+      margin-bottom: 14px;
     }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(255,255,255,0.1);
-      border: 0.5px solid rgba(255,255,255,0.2);
-      border-radius: 20px; padding: 5px 16px;
-      font-size: 12px; color: var(--teal-soft);
-      letter-spacing: 0.05em; margin-bottom: 1.5rem;
+
+    /* ───────────────────────────────────────────
+       LAYOUT HELPERS
+    ─────────────────────────────────────────── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 28px;
     }
-    .hero h1 {
-      font-size: 3rem; font-weight: 600;
-      color: var(--white); line-height: 1.2;
-      margin-bottom: 1rem;
+
+    section { padding: 104px 0; }
+
+    /* ───────────────────────────────────────────
+       BUTTONS
+    ─────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      border-radius: var(--r-btn);
+      padding: 13px 26px;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+      position: relative;
+      overflow: hidden;
     }
-    .hero h1 span { color: var(--teal-soft); }
-    .hero-sub {
-      font-size: 16px; color: rgba(255,255,255,0.68);
-      max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.7;
-    }
-    .hero-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
     .btn-primary {
-      background: var(--teal-mid); color: var(--white);
-      border: none; border-radius: 8px;
-      padding: 13px 28px; font-size: 15px; font-weight: 500;
-      cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
-      text-decoration: none; transition: background 0.2s;
+      background: var(--color-primary);
+      color: #fff;
     }
-    .btn-primary:hover { background: var(--teal-dark); }
+
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.22) 50%, transparent 100%);
+      transform: translateX(-100%);
+      transition: transform 0.45s ease;
+    }
+
+    .btn-primary:hover::after { transform: translateX(100%); }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(26,86,219,0.38);
+    }
+
     .btn-outline {
-      background: transparent; color: var(--white);
-      border: 0.5px solid rgba(255,255,255,0.4);
-      border-radius: 8px; padding: 13px 28px;
-      font-size: 15px; cursor: pointer;
-      display: inline-flex; align-items: center; gap: 8px;
-      text-decoration: none; transition: background 0.2s;
-    }
-    .btn-outline:hover { background: rgba(255,255,255,0.08); }
-
-    /* STATS */
-    .stats {
-      background: var(--white);
-      border-bottom: 0.5px solid var(--gray-border);
-      padding: 1.75rem 2rem;
-      display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
-    }
-    .stat { text-align: center; }
-    .stat-num { font-size: 1.6rem; font-weight: 600; color: var(--blue-dark); }
-    .stat-label { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
-
-    /* SECTIONS */
-    section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
-    .section-label {
-      font-size: 11px; font-weight: 600;
-      letter-spacing: 0.1em; color: var(--teal-dark);
-      text-transform: uppercase; margin-bottom: 0.4rem;
-    }
-    .section-title {
-      font-size: 1.7rem; font-weight: 600;
-      color: var(--text-main); margin-bottom: 0.6rem;
-    }
-    .section-desc {
-      font-size: 15px; color: var(--text-muted);
-      margin-bottom: 2.5rem; max-width: 540px; line-height: 1.7;
+      background: transparent;
+      color: var(--color-dark);
+      border: 1.5px solid var(--color-border);
     }
 
-    /* SERVICES */
+    .btn-outline:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    .btn-white {
+      background: #fff;
+      color: var(--color-dark);
+      font-weight: 600;
+      font-size: 16px;
+      padding: 15px 36px;
+    }
+
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 36px rgba(255,255,255,0.18);
+    }
+
+    /* ───────────────────────────────────────────
+       NAVBAR
+    ─────────────────────────────────────────── */
+    .navbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 200;
+      padding: 22px 0;
+      transition: padding 0.35s ease, background 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease;
+      border-bottom: 1px solid transparent;
+    }
+
+    .navbar.scrolled {
+      background: rgba(247,248,250,0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom-color: var(--color-border);
+      padding: 14px 0;
+    }
+
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--color-dark);
+      letter-spacing: -0.025em;
+      white-space: nowrap;
+    }
+
+    .logo .dot { color: var(--color-accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-dark);
+      opacity: 0.72;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 1; }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--color-dark);
+      padding: 6px;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+
+    .nav-toggle:hover { background: var(--color-border); }
+
+    /* ───────────────────────────────────────────
+       HERO
+    ─────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 100px;
+      padding-bottom: 80px;
+      background: var(--color-bg);
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 60fr 40fr;
+      align-items: center;
+      gap: 72px;
+    }
+
+    /* Badge pill */
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: rgba(0,201,167,0.11);
+      color: #009e84;
+      border: 1px solid rgba(0,201,167,0.28);
+      border-radius: var(--r-pill);
+      padding: 7px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 26px;
+    }
+
+    .badge-pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      animation: pulse 2.2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:.55; transform:scale(.8); }
+    }
+
+    /* H1 underline animation */
+    .hero-title { margin-bottom: 22px; }
+
+    .hl {
+      position: relative;
+      display: inline;
+    }
+
+    .hl::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: growLine 1s cubic-bezier(.16,1,.3,1) forwards 0.8s;
+    }
+
+    @keyframes growLine { to { transform: scaleX(1); } }
+
+    .hero-sub {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--color-muted);
+      max-width: 500px;
+      margin-bottom: 38px;
+      line-height: 1.72;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .hero-stats {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-muted);
+      flex-wrap: wrap;
+    }
+
+    .hero-stats .sep { color: var(--color-accent); font-size: 22px; line-height: 1; }
+
+    /* Hero visual */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .blob-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+    }
+
+    .blob-svg {
+      width: 100%;
+      height: auto;
+      animation: blobFloat 7s ease-in-out infinite;
+    }
+
+    @keyframes blobFloat {
+      0%,100% { transform: translateY(0) rotate(0deg); }
+      33%      { transform: translateY(-14px) rotate(1.2deg); }
+      66%      { transform: translateY(7px) rotate(-0.8deg); }
+    }
+
+    .float-card {
+      position: absolute;
+      bottom: 20px;
+      left: -24px;
+      background: var(--color-surface);
+      border-radius: var(--r-card);
+      padding: 14px 18px;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      animation: cardBob 4.5s ease-in-out infinite;
+    }
+
+    @keyframes cardBob {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-9px); }
+    }
+
+    .float-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(0,201,167,0.13);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-accent);
+      flex-shrink: 0;
+    }
+
+    .float-label { font-size: 13.5px; font-weight: 500; color: var(--color-dark); }
+    .float-sub   { font-size: 11.5px; color: var(--color-muted); }
+
+    /* ───────────────────────────────────────────
+       SECTION HEADER (reusable)
+    ─────────────────────────────────────────── */
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .section-header h2 { margin-bottom: 14px; }
+
+    .section-header p {
+      color: var(--color-muted);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ───────────────────────────────────────────
+       SERVICES
+    ─────────────────────────────────────────── */
+    #servicios { background: var(--color-surface); }
+
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
     }
-    .service-card {
-      background: var(--white);
-      border: 0.5px solid var(--gray-border);
-      border-radius: 12px; padding: 1.5rem 1.25rem;
-      display: flex; flex-direction: column; gap: 12px;
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
-    .service-card:hover {
-      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
-      transform: translateY(-2px);
-    }
-    .service-icon {
-      width: 42px; height: 42px; border-radius: 10px;
-      background: var(--teal-light);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .service-icon i { font-size: 20px; color: var(--teal-dark); }
-    .service-name { font-size: 15px; font-weight: 600; color: var(--text-main); }
-    .service-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
 
-    /* TEAM */
-    .team-section-wrap {
-      background: var(--gray-bg);
-      border-top: 0.5px solid var(--gray-border);
-      border-bottom: 0.5px solid var(--gray-border);
+    .service-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-top: 3px solid var(--color-accent);
+      border-radius: var(--r-card);
+      padding: 32px 26px 30px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-top-color 0.25s ease;
     }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-top-color: var(--color-primary);
+    }
+
+    .srv-num {
+      position: absolute;
+      top: -6px;
+      right: 14px;
+      font-family: 'Syne', sans-serif;
+      font-size: 88px;
+      font-weight: 800;
+      color: rgba(229,231,235,0.55);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .srv-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(0,201,167,0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-accent);
+      margin-bottom: 20px;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    .service-card:hover .srv-icon {
+      background: rgba(26,86,219,0.1);
+      color: var(--color-primary);
+    }
+
+    .service-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      font-size: 14px;
+      color: var(--color-muted);
+      line-height: 1.65;
+    }
+
+    /* ───────────────────────────────────────────
+       TEAM
+    ─────────────────────────────────────────── */
+    #equipo { background: var(--color-bg); }
+
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px; margin-top: 0;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      max-width: 700px;
+      margin: 0 auto;
     }
+
     .team-card {
-      background: var(--white);
-      border: 0.5px solid var(--gray-border);
-      border-radius: 12px; padding: 1.75rem 1.5rem;
-      display: flex; align-items: center; gap: 16px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--r-card);
+      padding: 40px 32px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
-    .avatar {
-      width: 58px; height: 58px; border-radius: 50%; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px; font-weight: 600;
+
+    .team-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
     }
-    .avatar-f { background: var(--teal-light); color: var(--teal-dark); }
-    .avatar-m { background: var(--blue-light); color: var(--blue-mid); }
-    .team-info {}
-    .team-name { font-size: 14px; font-weight: 600; color: var(--text-main); margin-bottom: 3px; }
-    .team-role { font-size: 12px; color: var(--text-muted); }
+
+    .team-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      margin: 0 auto 20px;
+    }
+
+    .team-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .team-role {
+      font-size: 14px;
+      color: var(--color-muted);
+      margin-bottom: 18px;
+    }
+
     .team-badge {
-      display: inline-block; margin-top: 8px;
-      font-size: 11px; padding: 3px 10px; border-radius: 20px;
-      background: var(--blue-light); color: var(--blue-mid); font-weight: 500;
+      display: inline-block;
+      background: rgba(26,86,219,0.08);
+      color: var(--color-primary);
+      border: 1px solid rgba(26,86,219,0.16);
+      border-radius: var(--r-pill);
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 500;
     }
 
-    /* WHY */
-    .why-grid {
+    /* ───────────────────────────────────────────
+       WHY US
+    ─────────────────────────────────────────── */
+    #por-que { background: var(--color-surface); }
+
+    .why-layout {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .why-left h2 { margin-bottom: 18px; }
+
+    .why-left p { color: var(--color-muted); max-width: 380px; }
+
+    .why-features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .why-item {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--r-card);
+      padding: 24px 22px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .why-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .why-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(26,86,219,0.08);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-primary);
+      margin-bottom: 14px;
+    }
+
+    .why-item h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .why-item p { font-size: 13px; color: var(--color-muted); line-height: 1.6; }
+
+    /* ───────────────────────────────────────────
+       CTA FINAL
+    ─────────────────────────────────────────── */
+    #contacto {
+      background: linear-gradient(135deg, var(--color-dark) 0%, #0D2448 100%);
+      padding: 112px 0;
+    }
+
+    .cta-inner { text-align: center; }
+
+    .cta-inner .overline { color: var(--color-accent); }
+
+    .cta-inner h2 {
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .cta-inner > p {
+      color: rgba(255,255,255,0.58);
+      max-width: 480px;
+      margin: 0 auto 48px;
+    }
+
+    .chips {
+      display: flex;
+      justify-content: center;
       gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
     }
-    .why-card {
-      background: var(--gray-bg);
-      border-radius: 10px; padding: 1.25rem;
-      display: flex; flex-direction: column; gap: 8px;
-    }
-    .why-card i { font-size: 22px; color: var(--teal-mid); }
-    .why-title { font-size: 14px; font-weight: 600; color: var(--text-main); }
-    .why-desc { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
 
-    /* CTA */
-    .cta-wrap {
-      background: var(--blue-dark);
-      padding: 5rem 2rem; text-align: center;
-    }
-    .cta-wrap h2 { font-size: 1.8rem; font-weight: 600; color: var(--white); margin-bottom: 0.75rem; }
-    .cta-wrap p { font-size: 15px; color: rgba(255,255,255,0.65); margin-bottom: 2rem; }
-    .contact-chips {
-      display: flex; flex-wrap: wrap; gap: 10px;
-      justify-content: center; margin-bottom: 2rem;
-    }
     .chip {
-      display: inline-flex; align-items: center; gap: 7px;
-      background: rgba(255,255,255,0.08);
-      border: 0.5px solid rgba(255,255,255,0.18);
-      border-radius: 20px; padding: 8px 18px;
-      font-size: 14px; color: var(--blue-light);
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: #fff;
+      border-radius: var(--r-pill);
+      padding: 12px 22px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.25s, border-color 0.25s, transform 0.25s;
     }
 
-    /* FOOTER */
+    .chip:hover {
+      background: rgba(255,255,255,0.14);
+      border-color: rgba(255,255,255,0.28);
+      transform: translateY(-2px);
+    }
+
+    /* ───────────────────────────────────────────
+       FOOTER
+    ─────────────────────────────────────────── */
     footer {
-      background: #081e38;
-      padding: 1.75rem 2rem;
-      display: flex; justify-content: space-between;
-      align-items: center; flex-wrap: wrap; gap: 8px;
+      background: var(--color-dark);
     }
-    .footer-brand {
-      font-size: 14px; font-weight: 600; color: var(--white);
-      display: flex; align-items: center; gap: 8px;
-    }
-    .footer-brand i { color: var(--teal-soft); }
-    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.4); }
 
-    /* RESPONSIVE */
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 2rem; }
-      .nav-links { display: none; }
-      .stats { gap: 1.5rem; }
+    .footer-line {
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 48px;
+      padding: 52px 0 40px;
+    }
+
+    .footer-brand .logo {
+      color: #fff;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .footer-tagline {
+      font-size: 14px;
+      color: rgba(255,255,255,0.42);
+      line-height: 1.65;
+      max-width: 280px;
+    }
+
+    .footer-col h5 {
+      font-family: 'Syne', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul { list-style: none; }
+
+    .footer-col ul li {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      padding: 4px 0;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 22px 0;
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ───────────────────────────────────────────
+       SCROLL ANIMATIONS
+    ─────────────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .d1 { transition-delay: 0.10s; }
+    .d2 { transition-delay: 0.20s; }
+    .d3 { transition-delay: 0.30s; }
+    .d4 { transition-delay: 0.40s; }
+
+    /* ───────────────────────────────────────────
+       RESPONSIVE
+    ─────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-grid     { gap: 48px; }
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 72px 0; }
+
+      /* Nav */
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        background: var(--color-surface);
+        flex-direction: column;
+        padding: 20px 28px;
+        gap: 4px;
+        box-shadow: var(--shadow-md);
+        border-top: 1px solid var(--color-border);
+        z-index: 100;
+      }
+
+      .nav-links.open { display: flex; }
+
+      .nav-links a { padding: 10px 0; font-size: 16px; }
+
+      .navbar-cta { display: none; }
+
+      .nav-toggle { display: flex; }
+
+      /* Hero */
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+      }
+
+      .hero-visual {
+        order: -1;
+        max-width: 280px;
+        margin: 0 auto;
+      }
+
+      .float-card { display: none; }
+
+      .hero-sub    { margin: 0 auto 38px; }
+      .hero-buttons { justify-content: center; }
+      .hero-stats  { justify-content: center; }
+
+      /* Services */
+      .services-grid { grid-template-columns: 1fr; }
+
+      /* Team */
+      .team-grid {
+        grid-template-columns: 1fr;
+        max-width: 340px;
+      }
+
+      /* Why */
+      .why-layout { grid-template-columns: 1fr; gap: 48px; }
+      .why-left p { max-width: 100%; }
+
+      /* Footer */
+      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+    }
+
+    @media (max-width: 480px) {
+      .why-features { grid-template-columns: 1fr; }
     }
   </style>
 </head>
+
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#" class="nav-brand">
-      <i class="ti ti-tooth"></i>
-      Odontología Integral
-    </a>
-    <ul class="nav-links">
-      <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#equipo">Equipo</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-    <a href="#contacto" class="nav-cta">
-      <i class="ti ti-calendar"></i> Solicitar turno
-    </a>
-  </nav>
+  <!-- ═══════════════════════════════════════
+       NAVBAR
+  ═══════════════════════════════════════ -->
+  <header>
+    <nav class="navbar" id="navbar" aria-label="Navegación principal">
+      <div class="container">
+        <div class="navbar-inner">
+          <a href="#" class="logo">Odontología Integral<span class="dot">.</span></a>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-badge">
-      <i class="ti ti-heart-handshake"></i>
-      Salud dental de calidad
-    </div>
-    <h1>Odontología<br><span>Integral</span></h1>
-    <p class="hero-sub">
-      Cuidamos tu sonrisa con profesionalismo, tecnología y calidez humana.
-      Tu salud dental merece lo mejor.
-    </p>
-    <div class="hero-ctas">
-      <a href="#contacto" class="btn-primary">
-        <i class="ti ti-calendar-plus"></i> Solicitar turno
-      </a>
-      <a href="#servicios" class="btn-outline">
-        <i class="ti ti-stethoscope"></i> Ver servicios
-      </a>
-    </div>
-  </div>
+          <ul class="nav-links" id="navLinks" role="list">
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#equipo">Equipo</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
 
-  <!-- STATS -->
-  <div class="stats">
-    <div class="stat">
-      <div class="stat-num">4+</div>
-      <div class="stat-label">Especialidades</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">2</div>
-      <div class="stat-label">Profesionales</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">100%</div>
-      <div class="stat-label">Compromiso</div>
-    </div>
-  </div>
+          <a href="#contacto" class="btn btn-primary navbar-cta">Pedir turno</a>
 
-  <!-- SERVICIOS -->
-  <section id="servicios">
-    <div class="section-label">Servicios</div>
-    <div class="section-title">¿Qué ofrecemos?</div>
-    <div class="section-desc">
-      Contamos con tratamientos modernos para cada necesidad dental,
-      en un entorno seguro y confortable.
-    </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon"><i class="ti ti-sparkles"></i></div>
-        <div class="service-name">Blanqueamiento dental</div>
-        <div class="service-desc">Recuperá el brillo natural de tu sonrisa con tratamientos seguros y efectivos.</div>
+          <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+              <line x1="3" y1="6"  x2="21" y2="6"/>
+              <line x1="3" y1="12" x2="21" y2="12"/>
+              <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+        </div>
       </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="ti ti-align-center"></i></div>
-        <div class="service-name">Ortodoncia</div>
-        <div class="service-desc">Alineá tu dentadura con brackets modernos o aparatología removible.</div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="ti ti-tool"></i></div>
-        <div class="service-name">Prótesis</div>
-        <div class="service-desc">Soluciones fijas y removibles para recuperar función y estética dental.</div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="ti ti-first-aid-kit"></i></div>
-        <div class="service-name">Odontología general</div>
-        <div class="service-desc">Diagnóstico, prevención, curaciones y limpieza profesional.</div>
-      </div>
-    </div>
-  </section>
+    </nav>
+  </header>
 
-  <!-- EQUIPO -->
-  <div class="team-section-wrap">
+  <main>
+
+    <!-- ═══════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════ -->
+    <section id="hero">
+      <div class="container">
+        <div class="hero-grid">
+
+          <!-- LEFT column -->
+          <div class="hero-content">
+            <!-- Badge pill -->
+            <div class="hero-badge" role="note">
+              <span class="badge-pulse" aria-hidden="true"></span>
+              Sonrisas que transforman
+            </div>
+
+            <!-- H1 -->
+            <h1 class="hero-title">
+              Tu <span class="hl">sonrisa</span>,<br>nuestra especialidad
+            </h1>
+
+            <p class="hero-sub">
+              Atención odontológica profesional e integral. Combinamos tecnología de vanguardia con el trato cálido que cada paciente merece.
+            </p>
+
+            <div class="hero-buttons">
+              <a href="#contacto" class="btn btn-primary">
+                Pedir turno
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#servicios" class="btn btn-outline">Ver servicios</a>
+            </div>
+
+            <div class="hero-stats" aria-label="Estadísticas">
+              <span>2 especialistas</span>
+              <span class="sep" aria-hidden="true">·</span>
+              <span>4 tratamientos</span>
+              <span class="sep" aria-hidden="true">·</span>
+              <span>100% profesional</span>
+            </div>
+          </div>
+
+          <!-- RIGHT column: blob + float card -->
+          <div class="hero-visual" aria-hidden="true">
+            <div class="blob-wrap">
+              <svg class="blob-svg" viewBox="0 0 460 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="blobG" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%"   stop-color="#1A56DB"/>
+                    <stop offset="100%" stop-color="#00C9A7"/>
+                  </linearGradient>
+                  <linearGradient id="blobG2" x1="0" y1="1" x2="1" y2="0">
+                    <stop offset="0%"   stop-color="#1A56DB" stop-opacity="0.18"/>
+                    <stop offset="100%" stop-color="#00C9A7" stop-opacity="0.18"/>
+                  </linearGradient>
+                  <clipPath id="blobClip">
+                    <path d="M230 52 C305 30 415 108 438 200 C461 292 405 385 315 422 C225 459 118 420 75 335 C32 250 55 130 140 84 C178 63 200 63 230 52Z"/>
+                  </clipPath>
+                </defs>
+                <!-- Main blob -->
+                <path d="M230 52 C305 30 415 108 438 200 C461 292 405 385 315 422 C225 459 118 420 75 335 C32 250 55 130 140 84 C178 63 200 63 230 52Z" fill="url(#blobG)"/>
+                <!-- Inner lighter blob -->
+                <path d="M230 90 C290 74 375 142 394 222 C413 302 368 377 295 407 C222 437 133 406 102 338 C71 270 88 170 160 132 C192 114 200 100 230 90Z" fill="url(#blobG2)"/>
+                <!-- Tooth icon, clipped inside blob -->
+                <g clip-path="url(#blobClip)">
+                  <g transform="translate(155,145)">
+                    <rect width="150" height="150" rx="28" fill="rgba(255,255,255,0.13)"/>
+                    <!-- Tooth shape -->
+                    <path d="M32 28 C32 16 42 10 56 10 C64 10 70 14 75 14 C80 14 86 10 94 10 C108 10 118 16 118 28 C118 44 112 60 109 76 C107.5 83 105 90 98 90 C91 90 88.5 83 85 73 C82.5 66 79 62 75 62 C71 62 67.5 66 65 73 C61.5 83 59 90 52 90 C45 90 42.5 83 41 76 C38 60 32 44 32 28Z" fill="white" opacity="0.88"/>
+                    <!-- Tooth detail line -->
+                    <path d="M75 14 C75 30 75 50 75 62" stroke="rgba(0,201,167,0.4)" stroke-width="2" stroke-linecap="round"/>
+                  </g>
+                </g>
+                <!-- Decorative circles -->
+                <circle cx="390" cy="122" r="20" fill="rgba(255,255,255,0.18)"/>
+                <circle cx="88"  cy="308" r="13" fill="rgba(255,255,255,0.14)"/>
+                <circle cx="408" cy="338" r="9"  fill="rgba(255,255,255,0.22)"/>
+                <circle cx="118" cy="152" r="6"  fill="rgba(255,255,255,0.3)"/>
+                <circle cx="360" cy="390" r="5"  fill="rgba(255,255,255,0.2)"/>
+              </svg>
+
+              <!-- Floating card -->
+              <div class="float-card">
+                <div class="float-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="float-label">Atención de calidad</div>
+                  <div class="float-sub">Profesionales certificados</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SERVICIOS
+    ═══════════════════════════════════════ -->
+    <section id="servicios">
+      <div class="container">
+        <div class="section-header fade-up">
+          <span class="overline">· Nuestros tratamientos ·</span>
+          <h2>Servicios odontológicos<br>de excelencia</h2>
+          <p>Ofrecemos una amplia gama de tratamientos para cuidar tu salud bucal con tecnología moderna y experiencia profesional.</p>
+        </div>
+
+        <div class="services-grid">
+          <!-- 01 Blanqueamiento -->
+          <article class="service-card fade-up d1">
+            <span class="srv-num" aria-hidden="true">01</span>
+            <div class="srv-icon">
+              <!-- Sparkle / shine icon -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 2l1.8 5.4L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.6z"/>
+                <path d="M19.5 16.5l.75 2.25 2.25.75-2.25.75-.75 2.25-.75-2.25-2.25-.75 2.25-.75z"/>
+                <path d="M4.5 16l.5 1.5 1.5.5-1.5.5-.5 1.5-.5-1.5L2.5 18l1.5-.5z"/>
+              </svg>
+            </div>
+            <h3>Blanqueamiento Dental</h3>
+            <p>Tratamiento estético que ilumina tu sonrisa de forma segura y efectiva, con resultados visibles desde la primera sesión.</p>
+          </article>
+
+          <!-- 02 Ortodoncia -->
+          <article class="service-card fade-up d2">
+            <span class="srv-num" aria-hidden="true">02</span>
+            <div class="srv-icon">
+              <!-- Brackets / align icon -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2"  y="7" width="5" height="10" rx="2"/>
+                <rect x="9"  y="4" width="6" height="16" rx="2"/>
+                <rect x="17" y="7" width="5" height="10" rx="2"/>
+                <line x1="7"  y1="12" x2="9"  y2="12"/>
+                <line x1="15" y1="12" x2="17" y2="12"/>
+              </svg>
+            </div>
+            <h3>Ortodoncia</h3>
+            <p>Corrección de la posición dental y maxilar con brackets o alineadores modernos. Sonrisas perfectas para todas las edades.</p>
+          </article>
+
+          <!-- 03 Prótesis -->
+          <article class="service-card fade-up d3">
+            <span class="srv-num" aria-hidden="true">03</span>
+            <div class="srv-icon">
+              <!-- Prosthesis / teeth row icon -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 8.5C3 6.6 4.6 5 6.5 5h11C19.4 5 21 6.6 21 8.5v1C21 13.6 18 17 14 17h-4C6 17 3 13.6 3 9.5V8.5z"/>
+                <line x1="8"  y1="9"  x2="8"  y2="13"/>
+                <line x1="12" y1="8"  x2="12" y2="14"/>
+                <line x1="16" y1="9"  x2="16" y2="13"/>
+              </svg>
+            </div>
+            <h3>Prótesis Dentales</h3>
+            <p>Restauramos tu dentadura con soluciones personalizadas: prótesis fijas, removibles e implantes de alta calidad y durabilidad.</p>
+          </article>
+
+          <!-- 04 General -->
+          <article class="service-card fade-up d4">
+            <span class="srv-num" aria-hidden="true">04</span>
+            <div class="srv-icon">
+              <!-- Tooth icon -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 3C9.2 3 6.5 5.2 6.5 8.5 6.5 13 9.5 16 9.5 20h5c0-4 3-7 3-11.5C17.5 5.2 14.8 3 12 3z"/>
+                <path d="M9 12.5h6"/>
+              </svg>
+            </div>
+            <h3>Odontología General</h3>
+            <p>Controles preventivos, limpiezas profesionales y tratamiento de caries para mantener tu salud bucal en óptimas condiciones.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         EQUIPO
+    ═══════════════════════════════════════ -->
     <section id="equipo">
-      <div class="section-label">Equipo profesional</div>
-      <div class="section-title">Conocé a nuestros odontólogos</div>
-      <div class="section-desc">
-        Profesionales comprometidos con tu bienestar y con años de experiencia clínica.
-      </div>
-      <div class="team-grid">
-        <div class="team-card">
-          <div class="avatar avatar-f">CA</div>
-          <div class="team-info">
+      <div class="container">
+        <div class="section-header fade-up">
+          <span class="overline">· Nuestros profesionales ·</span>
+          <h2>El equipo que cuida<br>tu sonrisa</h2>
+          <p>Profesionales con sólida formación y experiencia, dedicados a brindarte la mejor atención odontológica.</p>
+        </div>
+
+        <div class="team-grid">
+          <div class="team-card fade-up d1">
+            <div class="team-avatar" aria-hidden="true">CA</div>
             <div class="team-name">Dra. Claudia del Carmen Abraham</div>
-            <div class="team-role">Odontóloga especialista</div>
+            <div class="team-role">Odontóloga Especialista</div>
             <span class="team-badge">Odontología Integral</span>
           </div>
-        </div>
-        <div class="team-card">
-          <div class="avatar avatar-m">DS</div>
-          <div class="team-info">
+
+          <div class="team-card fade-up d2">
+            <div class="team-avatar" aria-hidden="true">DS</div>
             <div class="team-name">Dr. Daniel Omar A. Sapag</div>
-            <div class="team-role">Odontólogo especialista</div>
+            <div class="team-role">Odontólogo Especialista</div>
             <span class="team-badge">Odontología Integral</span>
           </div>
         </div>
       </div>
     </section>
-  </div>
 
-  <!-- POR QUÉ ELEGIRNOS -->
-  <section>
-    <div class="section-label">¿Por qué elegirnos?</div>
-    <div class="section-title">Nuestra filosofía de atención</div>
-    <div class="why-grid">
-      <div class="why-card">
-        <i class="ti ti-shield-check"></i>
-        <div class="why-title">Atención segura</div>
-        <div class="why-desc">Protocolos de higiene y bioseguridad en cada consulta.</div>
-      </div>
-      <div class="why-card">
-        <i class="ti ti-users"></i>
-        <div class="why-title">Trato personalizado</div>
-        <div class="why-desc">Escuchamos y acompañamos cada tratamiento de cerca.</div>
-      </div>
-      <div class="why-card">
-        <i class="ti ti-device-desktop-analytics"></i>
-        <div class="why-title">Tecnología moderna</div>
-        <div class="why-desc">Equipamiento actualizado para diagnósticos precisos.</div>
-      </div>
-      <div class="why-card">
-        <i class="ti ti-clock"></i>
-        <div class="why-title">Horarios flexibles</div>
-        <div class="why-desc">Turnos adaptados a tu agenda y necesidades.</div>
-      </div>
-    </div>
-  </section>
+    <!-- ═══════════════════════════════════════
+         ¿POR QUÉ ELEGIRNOS?
+    ═══════════════════════════════════════ -->
+    <section id="por-que">
+      <div class="container">
+        <div class="why-layout">
 
-  <!-- CONTACTO CTA -->
-  <div class="cta-wrap" id="contacto">
-    <h2>¿Listo para cuidar tu sonrisa?</h2>
-    <p>Contactanos y agendá tu consulta hoy mismo.</p>
-    <div class="contact-chips">
-      <span class="chip"><i class="ti ti-phone"></i> Llamar al consultorio</span>
-      <span class="chip"><i class="ti ti-brand-whatsapp"></i> WhatsApp</span>
-      <span class="chip"><i class="ti ti-map-pin"></i> Ver ubicación</span>
-    </div>
-    <a href="mailto:contacto@odontologiaintegral.com" class="btn-primary" style="font-size:15px; padding:14px 32px;">
-      <i class="ti ti-mail"></i> Enviar consulta
-    </a>
-  </div>
+          <div class="why-left fade-up">
+            <span class="overline">· Nuestra diferencia ·</span>
+            <h2>¿Por qué elegirnos?</h2>
+            <p>Nos comprometemos con tu bienestar en cada visita, ofreciendo un servicio de primer nivel en un ambiente cálido y profesional.</p>
+          </div>
 
-  <!-- FOOTER -->
+          <div class="why-features">
+            <!-- Atención personalizada -->
+            <div class="why-item fade-up d1">
+              <div class="why-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </div>
+              <h4>Atención personalizada</h4>
+              <p>Cada paciente recibe un plan de tratamiento adaptado a sus necesidades y objetivos específicos.</p>
+            </div>
+
+            <!-- Tecnología moderna -->
+            <div class="why-item fade-up d2">
+              <div class="why-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="2" y="3" width="20" height="14" rx="2"/>
+                  <line x1="8" y1="21" x2="16" y2="21"/>
+                  <line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+              </div>
+              <h4>Tecnología moderna</h4>
+              <p>Equipamiento de última generación para diagnósticos precisos y tratamientos eficientes.</p>
+            </div>
+
+            <!-- Bioseguridad -->
+            <div class="why-item fade-up d3">
+              <div class="why-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <polyline points="9 12 11 14 15 10"/>
+                </svg>
+              </div>
+              <h4>Bioseguridad certificada</h4>
+              <p>Protocolos estrictos de esterilización y desinfección para tu total tranquilidad y seguridad.</p>
+            </div>
+
+            <!-- Turnos flexibles -->
+            <div class="why-item fade-up d4">
+              <div class="why-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="18" rx="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6"/>
+                  <line x1="8"  y1="2" x2="8"  y2="6"/>
+                  <line x1="3"  y1="10" x2="21" y2="10"/>
+                  <polyline points="9 16 11 18 15 14"/>
+                </svg>
+              </div>
+              <h4>Turnos flexibles</h4>
+              <p>Horarios adaptados a tu rutina para que el cuidado dental no sea un obstáculo en tu día.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         CTA FINAL / CONTACTO
+    ═══════════════════════════════════════ -->
+    <section id="contacto">
+      <div class="container">
+        <div class="cta-inner fade-up">
+          <span class="overline">· Comenzá hoy ·</span>
+          <h2>Tu sonrisa perfecta<br>está a un turno de distancia</h2>
+          <p>Contactanos y uno de nuestros profesionales te asesorará para encontrar el tratamiento ideal para vos.</p>
+
+          <div class="chips">
+            <!-- Llamar -->
+            <a href="tel:+541100000000" class="chip">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.4a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l1.28-1.28a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              Llamar
+            </a>
+
+            <!-- WhatsApp -->
+            <a href="https://wa.me/541100000000" class="chip" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+              </svg>
+              WhatsApp
+            </a>
+
+            <!-- Email -->
+            <a href="mailto:contacto@odontologiaintegral.com" class="chip">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              Email
+            </a>
+          </div>
+
+          <a href="tel:+541100000000" class="btn btn-white">
+            Pedir turno ahora
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
   <footer>
-    <div class="footer-brand">
-      <i class="ti ti-tooth"></i>
-      Odontología Integral
+    <div class="footer-line" aria-hidden="true"></div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">Odontología Integral<span class="dot">.</span></a>
+          <p class="footer-tagline">Cuidamos tu salud bucal con profesionalismo, tecnología y vocación de servicio.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Profesionales</h5>
+          <ul>
+            <li>Dra. Claudia del Carmen Abraham</li>
+            <li>Dr. Daniel Omar A. Sapag</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Servicios</h5>
+          <ul>
+            <li>Blanqueamiento Dental</li>
+            <li>Ortodoncia</li>
+            <li>Prótesis Dentales</li>
+            <li>Odontología General</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="footer-copy">Dra. Abraham · Dr. Sapag · Salud dental profesional</div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 Odontología Integral &nbsp;·&nbsp; Dra. Abraham &amp; Dr. Sapag &nbsp;·&nbsp; Todos los derechos reservados</p>
+      </div>
+    </div>
   </footer>
+
+  <!-- ═══════════════════════════════════════
+       JAVASCRIPT
+  ═══════════════════════════════════════ -->
+  <script>
+    /* ── Navbar scroll effect ── */
+    const navbar = document.getElementById('navbar');
+    let lastY = 0;
+
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      navbar.classList.toggle('scrolled', y > 40);
+      lastY = y;
+    }, { passive: true });
+
+    /* ── Mobile nav toggle ── */
+    const navToggle = document.getElementById('navToggle');
+    const navLinks  = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open);
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* ── Scroll animations (IntersectionObserver) ── */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // unobserve after triggered to free memory
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
